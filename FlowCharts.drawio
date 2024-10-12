@@ -1,0 +1,353 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0" version="24.7.17">
+  <diagram name="Page-1" id="-OWUPwZAT2Os7UZ4laFa">
+    <mxGraphModel dx="4673" dy="2490" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fZj-AllMGKDKALvuFIqb-125" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="600" width="500" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-107" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="1260" width="580" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-74" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="360" width="520" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-28" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="990" width="520" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-17" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="33" y="340" width="520" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-1" target="fZj-AllMGKDKALvuFIqb-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-2" target="fZj-AllMGKDKALvuFIqb-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="173" y="210" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-1" value="Import necessary packages - &lt;br&gt;&lt;div&gt;pygame, sys, etc&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="63" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-2" value="START" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="63" y="110" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-3" target="fZj-AllMGKDKALvuFIqb-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-3" value="&lt;div&gt;Initialize PyGame&lt;/div&gt;&lt;div&gt;Initialize window for displaying game&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="63" y="360" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-6" target="fZj-AllMGKDKALvuFIqb-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-6" value="Initialize a pygame surface to help in scaling" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="228" y="365" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-8" value="Initialize a clock object to keep track of time" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="393" y="365" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-10" target="fZj-AllMGKDKALvuFIqb-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-10" value="Initialize tile map for displaying tiles on a grid" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="393" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-13" target="fZj-AllMGKDKALvuFIqb-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-13" value="Initialize player object" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="63" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.534;entryY=-0.004;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-8" target="fZj-AllMGKDKALvuFIqb-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="453" y="430" as="sourcePoint" />
+            <mxPoint x="403" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-18" value="Initialization of important objects" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=21;" vertex="1" parent="1">
+          <mxGeometry x="168" y="550" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-20" target="fZj-AllMGKDKALvuFIqb-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-20" value="Loading assets like player sprites, tiles and decorations" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="63" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-22" target="fZj-AllMGKDKALvuFIqb-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-22" value="Start the game loop which runs every frame" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="63" y="760" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-24" target="fZj-AllMGKDKALvuFIqb-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-24" value="Clear the screen to erase the previous frame and draw the background" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="58" y="870" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-26" target="fZj-AllMGKDKALvuFIqb-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-26" value="Rendering the tile map" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="63" y="1010" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-29" target="fZj-AllMGKDKALvuFIqb-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-29" value="Update and render the player" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="223" y="1010" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-31" value="" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="383" y="1010" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-33" value="Updating and rendering objects" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=21;" vertex="1" parent="1">
+          <mxGeometry x="158" y="1110" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-39" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1245" width="520" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-44" target="fZj-AllMGKDKALvuFIqb-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-44" value="QUIT event input received" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="58" y="1260" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-45" value="Close window" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="273" y="1260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-47" value="Arrow keys input received" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="48" y="1350" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-48" value="Move the player accordingly" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="273" y="1350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-47" target="fZj-AllMGKDKALvuFIqb-48">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="188" y="1300" as="sourcePoint" />
+            <mxPoint x="283" y="1300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.192;exitY=1.003;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="fZj-AllMGKDKALvuFIqb-44">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="122.84000000000015" y="1190.6" as="sourcePoint" />
+            <mxPoint x="133" y="1120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-53" value="Handling inputs" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=21;" vertex="1" parent="1">
+          <mxGeometry x="423" y="1310" width="105" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.429;exitY=0.987;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-44" target="fZj-AllMGKDKALvuFIqb-47">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="178" y="1390" as="sourcePoint" />
+            <mxPoint x="283" y="1390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-55" target="fZj-AllMGKDKALvuFIqb-56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-55" value="Update the screen to draw the next frame" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="63" y="1570" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-56" value="Put the program to sleep before drawing the next frame to maintain a constant framerate" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40.5" y="1680" width="165" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-58" value="game.py" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=34;" vertex="1" parent="1">
+          <mxGeometry x="30" y="40" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.182;exitY=0.999;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="fZj-AllMGKDKALvuFIqb-55">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="122.64000000000033" y="1509.73" as="sourcePoint" />
+            <mxPoint x="133" y="1270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-62" value="utils.py" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=34;" vertex="1" parent="1">
+          <mxGeometry x="900" y="40" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-65" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-63" target="fZj-AllMGKDKALvuFIqb-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-63" value="START" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="110" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-68" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-64" target="fZj-AllMGKDKALvuFIqb-67">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-64" value="Import necessary packages - pygame, os" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.095;entryY=0.515;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-67" target="fZj-AllMGKDKALvuFIqb-71">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1130" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-67" value="Use the pygame.image.load() function to load the image at the file path" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="915" y="390" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-71" value="Return the image object" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="395" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-75" value="load_image(file_path)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="405" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-81" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;exitX=0.176;exitY=1.006;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.352;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-74" target="fZj-AllMGKDKALvuFIqb-82">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="920" y="500" as="sourcePoint" />
+            <mxPoint x="970" y="530" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-82" value="Define a fuction called load_images(path_to_dir) which loads a number of images at once" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="915" y="530" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-83" value="entity.py" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=34;" vertex="1" parent="1">
+          <mxGeometry x="890" y="700" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-86" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-84" target="fZj-AllMGKDKALvuFIqb-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-84" value="START" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="780" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-88" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-85" target="fZj-AllMGKDKALvuFIqb-87">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-85" value="Define a class named PhysicsEntity" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="920" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-90" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-87" target="fZj-AllMGKDKALvuFIqb-89">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-87" value="Define a constructor for PhysicsEntity taking in type, position, and size of the entity" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="905" y="1040" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-94" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-89" target="fZj-AllMGKDKALvuFIqb-93">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-89" value="Initalize important variables like velocity, collisions, etc" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-96" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-93" target="fZj-AllMGKDKALvuFIqb-95">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-93" value="Define an update function for the PhysicsEntity" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-99" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-95" target="fZj-AllMGKDKALvuFIqb-98">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-95" value="Calculate the new position of the entity by using its velocity in the previous frame and update its position in the next frame depending on the input and previous movement" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1275" width="290" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-101" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-98" target="fZj-AllMGKDKALvuFIqb-100">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-98" value="Check for collisions with nearby tiles" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1185" y="1390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-103" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-100" target="fZj-AllMGKDKALvuFIqb-102">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-100" value="If the entity collides with a tile, prevent the entity from moving in that direction" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="917.5" y="1385" width="125" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-102" value="If the entity is not colliding with any block below it,&amp;nbsp; then update its downward velocity taking gravity into consideration" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="1510" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-108" value="Update function for PhysicsEntity" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=21;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="1500" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-109" value="Render the entity onto the screen" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="895" y="1690" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-110" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.175;exitY=1.002;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.479;entryY=-0.004;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-107" target="fZj-AllMGKDKALvuFIqb-109">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="990" y="1465" as="sourcePoint" />
+            <mxPoint x="990" y="1520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-111" value="tilemap.py" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=34;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="40" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-114" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-112" target="fZj-AllMGKDKALvuFIqb-113">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-112" value="START" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="110" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-116" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-113">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1840" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-113" value="Import necessary packages like pygame" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1775" y="240" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-139" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.14;entryY=-0.004;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-115" target="fZj-AllMGKDKALvuFIqb-125">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-115" value="Define a constructor which has the variables tile_size, tile_map and offgrid_tiles" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="470" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-117" value="Define a function tiles_around which has the position of a point as an argument" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2220" y="200" width="130" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-122" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="fZj-AllMGKDKALvuFIqb-119">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1897.5" y="660" as="sourcePoint" />
+            <mxPoint x="1977.5" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-119" value="Convert a position in pixel to a position in grid tiles" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1980" y="630" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-127" value="Return a list containing the neighboring tiles in the tile map" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1777.5" y="625" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-133" value="&lt;div&gt;Define a class TileMap to handle the position and rendering of tiles in the game&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1767.5" y="340" width="145" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-134" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.445;exitY=1.003;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.514;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-133" target="fZj-AllMGKDKALvuFIqb-115">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1850" y="310" as="sourcePoint" />
+            <mxPoint x="1850" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-137" value="tiles_around(pos)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2120" y="645" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-148" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.154;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-140" target="fZj-AllMGKDKALvuFIqb-147">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-140" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="770" width="520" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-141" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="fZj-AllMGKDKALvuFIqb-142">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1897.5" y="830" as="sourcePoint" />
+            <mxPoint x="1977.5" y="830" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-142" value="Return a list of these rects" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1980" y="800" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-145" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-143" target="fZj-AllMGKDKALvuFIqb-142">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-143" value="Go through the neighbouring tiles of the player and convert them to pygame rects" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1777.5" y="785" width="142.5" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-144" value="physics_tiles_around(pos)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2110" y="815" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-146" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.432;entryY=0.025;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.157;exitY=1.004;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="fZj-AllMGKDKALvuFIqb-125" target="fZj-AllMGKDKALvuFIqb-143">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fZj-AllMGKDKALvuFIqb-147" value="Render the tiles which are visible in the window in that frame" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1768.75" y="940" width="142.5" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
