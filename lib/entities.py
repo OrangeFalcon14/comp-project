@@ -1,6 +1,8 @@
 import pygame.transform
 import pygame
 
+from lib import constants
+
 
 class PhysicsEntity:
     def __init__(self, game, e_type, pos, size):
@@ -96,6 +98,7 @@ class Player(PhysicsEntity):
         self.attack_time = 0
         self.turn_around_time = 0
         self.dead = False
+        self.sprinting = False
 
     def update(self, tilemap, movement=(0, 0)):
         super().update(tilemap, movement=movement)
@@ -130,3 +133,11 @@ class Player(PhysicsEntity):
             self.set_action("run")
         else:
             self.set_action("idle")
+
+        if self.sprinting:
+            if movement[0] > 0:
+                self.velocity[0] = constants.SPRINT_MULTIPLIER
+            elif movement[0] < 0:
+                self.velocity[0] = -constants.SPRINT_MULTIPLIER
+        else:
+            self.velocity[0] = 0

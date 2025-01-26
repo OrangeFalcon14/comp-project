@@ -34,6 +34,8 @@ class Game:
             "pillar1": load_images("tiles/pillars/pillar1"),
             "pillar2": load_images("tiles/pillars/pillar1"),
             "pillar_broken": load_images("tiles/pillars/broken"),
+            "open_gate": load_images("tiles/gates/open"),
+            "closed_gate": load_images("tiles/gates/closed"),
             "player/idle": Animation(load_images("entities/player/idle")),
             "player/run": Animation(load_images("entities/player/run")),
             "player/turn_around": Animation(load_images("entities/player/turn_around")),
@@ -46,12 +48,12 @@ class Game:
             ),
         }
 
-        self.player = Player(self, (200, 200), (15, 38))
+        self.player = Player(self, (235, 380), (15, 30))
 
         self.tilemap = Tilemap(self, tile_size=32)
 
         try:
-            self.tilemap.load("data/maps/map.json")
+            self.tilemap.load("data/maps/level1.json")
         except FileNotFoundError:
             pass
 
@@ -106,11 +108,16 @@ class Game:
                         self.movement[1] = True
                     if event.key == pygame.K_w or event.key == pygame.K_SPACE:
                         self.player.velocity[1] = -3
+                    if event.key == pygame.K_LSHIFT:
+                        if self.player.air_time < 5:
+                            self.player.sprinting = True
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_a:
                         self.movement[0] = False
                     if event.key == pygame.K_d:
                         self.movement[1] = False
+                    if event.key == pygame.K_LSHIFT:
+                        self.player.sprinting = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         if self.movement[0] or self.movement[1]:
