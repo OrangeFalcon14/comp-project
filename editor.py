@@ -2,11 +2,12 @@ import sys
 
 import pygame
 
-from game import RESOLUTION, SCALING_FACTOR
-from scripts.utils import load_image, load_images
-from scripts.tilemap import Tilemap
+from lib.constants import RESOLUTION, SCALING_FACTOR
+from lib.utils import load_image, load_images
+from lib.tilemap import Tilemap
 
 RENDER_SCALE = 2.0
+FILE_PATH = "data/maps/level1.json"
 
 
 class Editor:
@@ -36,6 +37,8 @@ class Editor:
             "pillar1": load_images("tiles/pillars/pillar1"),
             "pillar2": load_images("tiles/pillars/pillar1"),
             "pillar_broken": load_images("tiles/pillars/broken"),
+            "open_gate": load_images("tiles/gates/open"),
+            "closed_gate": load_images("tiles/gates/closed"),
         }
 
         self.movement = [False, False, False, False]
@@ -43,7 +46,7 @@ class Editor:
         self.tilemap = Tilemap(self, tile_size=32)
 
         try:
-            self.tilemap.load("map.json")
+            self.tilemap.load(FILE_PATH)
         except FileNotFoundError:
             pass
 
@@ -184,7 +187,7 @@ class Editor:
                     if event.key == pygame.K_g:
                         self.ongrid = not self.ongrid
                     if event.key == pygame.K_o:
-                        self.tilemap.save("map.json")
+                        self.tilemap.save(FILE_PATH)
                     if event.key == pygame.K_LSHIFT:
                         self.shift = True
                 if event.type == pygame.KEYUP:
