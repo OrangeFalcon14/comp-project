@@ -14,7 +14,13 @@ NEIGHBOR_OFFSETS = [
     (0, 1),
     (1, 1),
 ]
-PHYSICS_TILES = {"floor", "stone", "wall_with_pillar", "large_floor"}
+PHYSICS_TILES = {"floor", "stone", "wall_with_pillar", "large_floor", "half_floor"}
+HALF_TILES = {"half_floor"}
+NON_RENDER_TILES = {
+    "skeleton_spawner",
+    "player_spawner",
+    "skeleton_path_mirror",
+}
 
 
 class Tilemap:
@@ -44,6 +50,7 @@ class Tilemap:
         self.tilemap = map_data["tilemap"]
         self.tile_size = map_data["tile_size"]
         self.offgrid_tiles = map_data["offgrid"]
+        # print(self.offgrid_tiles)
 
     def tiles_around(self, pos):
         tiles = []
@@ -66,7 +73,11 @@ class Tilemap:
                         tile["pos"][0] * self.tile_size,
                         tile["pos"][1] * self.tile_size,
                         self.tile_size,
-                        self.tile_size,
+                        (
+                            self.tile_size * 1
+                            if tile["type"] not in HALF_TILES
+                            else self.tile_size * 0.5
+                        ),
                     )
                 )
         return rects
@@ -83,6 +94,8 @@ class Tilemap:
                 loc = str(x) + ";" + str(y)
                 if loc in self.tilemap:
                     tile = self.tilemap[loc]
+                    if tile["type"] == "skeleton_path_mirror":
+                        continue
                     surf.blit(
                         self.game.assets[tile["type"]][tile["variant"]],
                         (
@@ -92,6 +105,8 @@ class Tilemap:
                     )
 
         for tile in self.offgrid_tiles:
+            if tile["type"] in NON_RENDER_TILES:
+                continue
             surf.blit(
                 self.game.assets[tile["type"]][tile["variant"]],
                 (tile["pos"][0] - offset[0], tile["pos"][1] - offset[1]),

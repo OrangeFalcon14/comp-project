@@ -1,7 +1,7 @@
 import pygame.transform
 import pygame
 
-from lib import constants
+from lib import constants, utils
 
 
 class PhysicsEntity:
@@ -58,12 +58,14 @@ class PhysicsEntity:
                     self.collisions["up"] = True
                 self.pos[1] = entity_rect.y
 
-        if movement[0] > 0:
+        if movement[0] > 0 or self.velocity[0] > 0:
             self.flip = False
-        if movement[0] < 0:
+        if movement[0] < 0 or self.velocity[0] < 0:
             self.flip = True
 
-        self.velocity[1] = min(5, self.velocity[1] + 0.1)
+        self.velocity[1] = min(
+            5, self.velocity[1] + (0.01 * constants.GRAVITY_CONSTANT)
+        )
 
         if self.collisions["down"] or self.collisions["up"]:
             self.velocity[1] = 0
@@ -71,9 +73,10 @@ class PhysicsEntity:
         self.animation.update()
 
     def render(self, surf, offset=(0, 0)):
+        img = pygame.transform.scale_by(self.animation.img(), 1)
+
         surface = pygame.Surface(self.rect().size)
         surface.fill((255, 0, 0))
-        img = pygame.transform.scale_by(self.animation.img(), 1)
         surf.blit(
             pygame.transform.flip(img, self.flip, False),
             (
@@ -90,26 +93,97 @@ class PhysicsEntity:
             ),
         )
 
+        # surf.blit(
+        #     surface,
+        #     (self.pos[0] - offset[0], self.pos[1] - offset[1]),
+        # )
+
+
+class Skeleton(PhysicsEntity):
+    def __init__(self, game, pos, size):
+        super().__init__(game, "skeleton", pos, size)
+        self.velocity = [constants.ENEMY_SPEED, 0]
+        self.animation.img_dur = 1
+        self.health = constants.ENEMY_HEALTH
+        self.time_since_damage = 0
+        self.time_since_death = 0
+        self.dead = False
+
+    def get_mirror_rects(self):
+        mirror_blocks = []
+        for tile in self.game.tilemap.offgrid_tiles:
+            if tile["type"] == "skeleton_path_mirror":
+                rect = pygame.Rect(
+                    tile["pos"][0],
+                    tile["pos"][1],
+                    10,
+                    10,
+                )
+                mirror_blocks.append(rect)
+        return mirror_blocks
+
+    def update(self, tilemap):
+        for block in self.get_mirror_rects():
+            if self.rect().colliderect(block):
+                self.velocity[0] = -self.velocity[0]
+
+        self.time_since_damage += 1
+
+        if self.dead:
+            self.time_since_death += 1
+
+        player = self.game.player
+
+        if self.health <= 0:
+            self.set_action("death")
+            self.dead = True
+            self.velocity = [0, 0]
+            # self.time_since_death = 0
+        elif self.time_since_damage > 8 * 5:
+            self.set_action("walk")
+        elif self.health >= 0:
+            self.set_action("hit")
+
+        if player.rect().colliderect(self.rect()) and not self.dead:
+            if (
+                player.action == "attack" or player.action == "attack_nomovement"
+            ) and self.time_since_damage > 30:
+                self.health -= 10
+                self.time_since_damage = 0
+                self.set_action("hit")
+
+        super().update(tilemap, (0, 0))
+
 
 class Player(PhysicsEntity):
     def __init__(self, game, pos, size):
         super().__init__(game, "player", pos, size)
         self.air_time = 0
         self.attack_time = 0
+        self.attack_cooldown = 0
         self.turn_around_time = 0
         self.dead = False
         self.sprinting = False
+        self.has_hit_wall = False
+        self.respawn_pos = [0, 0]
+        self.health = 60
+        self.time_since_damage = 0
 
     def update(self, tilemap, movement=(0, 0)):
         super().update(tilemap, movement=movement)
 
         self.air_time += 1
+        self.attack_cooldown = (
+            0 if self.attack_cooldown == 0 else self.attack_cooldown - 1
+        )
+
+        if self.air_time / 60 > 1.5 and self.pos[1] > self.game.display.get_size()[1]:
+            self.dead = True
+
         if self.collisions["down"]:
             self.air_time = 0
 
-        if self.action == "death":
-            self.dead = True
-        elif self.action == "turn_around":
+        if self.action == "turn_around":
             if self.turn_around_time < 5:
                 self.turn_around_time += 1
             else:
@@ -134,10 +208,43 @@ class Player(PhysicsEntity):
         else:
             self.set_action("idle")
 
+        if self.action in ["attack", "attack_nomovement"]:
+            self.size = (74, 30)
+        else:
+            self.size = (15, 30)
+
+        if self.health <= 0:
+            self.dead = True
+            self.set_action("death")
+
+        self.time_since_damage += 1
+
+        for skeleton in self.game.skeletons:
+            rect = self.rect()
+            if (
+                rect.colliderect(skeleton.rect())
+                and self.time_since_damage > 50
+                and not self.attack_time > 0
+                and not skeleton.dead
+                and not skeleton.time_since_damage < 30
+            ):
+                self.health -= 10
+                self.time_since_damage = 0
+
         if self.sprinting:
             if movement[0] > 0:
-                self.velocity[0] = constants.SPRINT_MULTIPLIER
+                self.velocity[0] = constants.SPRINT_CONSTANT - utils.clamp(
+                    self.air_time * constants.DRAG_COEFFECIENT,
+                    0,
+                    constants.MAX_AIR_DRAG,
+                )
             elif movement[0] < 0:
-                self.velocity[0] = -constants.SPRINT_MULTIPLIER
+                self.velocity[0] = -constants.SPRINT_CONSTANT + utils.clamp(
+                    self.air_time * constants.DRAG_COEFFECIENT,
+                    0,
+                    constants.MAX_AIR_DRAG,
+                )
+            else:
+                self.velocity[0] = 0
         else:
             self.velocity[0] = 0

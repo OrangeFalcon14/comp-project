@@ -8,6 +8,11 @@ from lib.tilemap import Tilemap
 
 RENDER_SCALE = 2.0
 FILE_PATH = "data/maps/level1.json"
+NON_RENDER_TILES = {
+    "skeleton_spawner",
+    "player_spawner",
+    "skeleton_path_mirror",
+}
 
 
 class Editor:
@@ -39,6 +44,11 @@ class Editor:
             "pillar_broken": load_images("tiles/pillars/broken"),
             "open_gate": load_images("tiles/gates/open"),
             "closed_gate": load_images("tiles/gates/closed"),
+            "half_floor": load_images("tiles/blocks/half_floor"),
+            "decorations": load_images("tiles/decorations"),
+            "player_spawner": load_images("entities/player/idle/"),
+            "skeleton_spawner": load_images("entities/skeleton/idle/"),
+            "skeleton_path_mirror": pygame.Surface((10, 10)),
         }
 
         self.movement = [False, False, False, False]
@@ -60,6 +70,7 @@ class Editor:
         self.right_clicking = False
         self.shift = False
         self.ongrid = True
+        self.fast = False
 
     def run(self):
         while True:
@@ -68,16 +79,23 @@ class Editor:
                 (0, 0),
             )
 
-            self.scroll[0] += (self.movement[1] - self.movement[0]) * 2
-            self.scroll[1] += (self.movement[3] - self.movement[2]) * 2
+            self.scroll[0] += (self.movement[1] - self.movement[0]) * (
+                2 if not self.fast else 6
+            )
+            self.scroll[1] += (self.movement[3] - self.movement[2]) * (
+                2 if not self.fast else 6
+            )
             render_scroll = (int(self.scroll[0]), int(self.scroll[1]))
 
             self.tilemap.render(self.display, offset=render_scroll)
 
-            current_tile_img = self.assets[self.tile_list[self.tile_group]][
-                self.tile_variant
-            ].copy()
-            current_tile_img.set_alpha(100)
+            try:
+                current_tile_img = self.assets[self.tile_list[self.tile_group]][
+                    self.tile_variant
+                ].copy()
+                current_tile_img.set_alpha(100)
+            except TypeError:
+                current_tile_img = pygame.Surface((0, 0))
 
             mpos = pygame.mouse.get_pos()
             mpos = (mpos[0] / RENDER_SCALE, mpos[1] / RENDER_SCALE)
@@ -103,12 +121,16 @@ class Editor:
                     "variant": self.tile_variant,
                     "pos": tile_pos,
                 }
+
             if self.right_clicking:
                 tile_loc = str(tile_pos[0]) + ";" + str(tile_pos[1])
                 if tile_loc in self.tilemap.tilemap:
                     del self.tilemap.tilemap[tile_loc]
                 for tile in self.tilemap.offgrid_tiles.copy():
-                    tile_img = self.assets[tile["type"]][tile["variant"]]
+                    if tile["type"] not in NON_RENDER_TILES:
+                        tile_img = self.assets[tile["type"]][tile["variant"]]
+                    else:
+                        tile_img = pygame.Surface((0, 0))
                     tile_r = pygame.Rect(
                         tile["pos"][0] - self.scroll[0],
                         tile["pos"][1] - self.scroll[1],
@@ -190,6 +212,8 @@ class Editor:
                         self.tilemap.save(FILE_PATH)
                     if event.key == pygame.K_LSHIFT:
                         self.shift = True
+                    if event.key == pygame.K_LALT:
+                        self.fast = True
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_a:
                         self.movement[0] = False
@@ -201,6 +225,8 @@ class Editor:
                         self.movement[3] = False
                     if event.key == pygame.K_LSHIFT:
                         self.shift = False
+                    if event.key == pygame.K_LALT:
+                        self.fast = False
 
             self.screen.blit(
                 pygame.transform.scale(self.display, self.screen.get_size()), (0, 0)

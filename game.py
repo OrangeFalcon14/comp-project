@@ -3,7 +3,7 @@ import sys
 import pygame
 
 from lib.utils import clamp, load_image, load_images, Animation
-from lib.entities import Player
+from lib.entities import Player, Skeleton
 from lib.tilemap import Tilemap
 import lib.constants as constants
 
@@ -36,6 +36,9 @@ class Game:
             "pillar_broken": load_images("tiles/pillars/broken"),
             "open_gate": load_images("tiles/gates/open"),
             "closed_gate": load_images("tiles/gates/closed"),
+            "decorations": load_images("tiles/decorations"),
+            "half_floor": load_images("tiles/blocks/half_floor"),
+            "hearts": load_images("assets/hearts"),
             "player/idle": Animation(load_images("entities/player/idle")),
             "player/run": Animation(load_images("entities/player/run")),
             "player/turn_around": Animation(load_images("entities/player/turn_around")),
@@ -46,9 +49,16 @@ class Game:
             "player/attack_nomovement": Animation(
                 load_images("entities/player/attack_nomovement")
             ),
+            "skeleton/attack": Animation(load_images("entities/skeleton/attack")),
+            "skeleton/death": Animation(load_images("entities/skeleton/death")),
+            "skeleton/hit": Animation(load_images("entities/skeleton/hit")),
+            "skeleton/idle": Animation(load_images("entities/skeleton/idle")),
+            "skeleton/walk": Animation(load_images("entities/skeleton/walk")),
         }
 
-        self.player = Player(self, (235, 380), (15, 30))
+        self.player = Player(self, (2000, 150), (15, 30))
+
+        self.skeletons = []
 
         self.tilemap = Tilemap(self, tile_size=32)
 
@@ -57,7 +67,21 @@ class Game:
         except FileNotFoundError:
             pass
 
+        self.setup()
+
         self.scroll = [0, 0]
+
+    def setup(self):
+        self.player.pos = self.player.respawn_pos.copy()
+        self.player.dead = False
+        self.player.health = 60
+        self.skeletons.clear()
+        for tile in self.tilemap.offgrid_tiles:
+            if tile["type"] == "player_spawner":
+                self.player.pos = tile["pos"].copy()
+                self.player.respawn_pos = tile["pos"].copy()
+            elif tile["type"] == "skeleton_spawner":
+                self.skeletons.append(Skeleton(self, tile["pos"], (15, 30)))
 
     def run(self):
         while True:
@@ -77,8 +101,6 @@ class Game:
                 - self.scroll[1]
             ) / 30
 
-            # self.scroll[0] = max(self.scroll[0], constants.HORIZONTAL_SCROLL_LIMIT)
-            # self.scroll[1] = min(self.scroll[1], constants.VERTICAL_SCROLL_LIMIT)
             self.scroll[0] = clamp(
                 self.scroll[0],
                 constants.HORIZONTAL_SCROLL_LIMIT["min"],
@@ -97,6 +119,14 @@ class Game:
             self.player.update(self.tilemap, (self.movement[1] - self.movement[0], 0))
             self.player.render(self.display, offset=render_scroll)
 
+            for i in range(len(self.skeletons) - 1, -1, -1):
+                skeleton = self.skeletons[i]
+                skeleton.update(self.tilemap)
+                if skeleton.time_since_death >= 15 * 5 - 2:
+                    # skeleton.set_action("death")
+                    self.skeletons.pop(i)
+                skeleton.render(self.display, offset=render_scroll)
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -107,7 +137,12 @@ class Game:
                     if event.key == pygame.K_d:
                         self.movement[1] = True
                     if event.key == pygame.K_w or event.key == pygame.K_SPACE:
-                        self.player.velocity[1] = -3
+                        if self.player.air_time < 5:
+                            self.player.velocity[1] = -constants.JUMP_STRENGTH * (
+                                1
+                                if not self.player.sprinting
+                                else constants.SPRINT_JUMP_HEIGHT_MULTIPLIER
+                            )
                     if event.key == pygame.K_LSHIFT:
                         if self.player.air_time < 5:
                             self.player.sprinting = True
@@ -119,16 +154,26 @@ class Game:
                     if event.key == pygame.K_LSHIFT:
                         self.player.sprinting = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if event.button == 1:
+                    if event.button == 1 and self.player.attack_cooldown == 0:
+                        self.player.attack_cooldown = constants.ATTACK_COOLDOWN * 60
                         if self.movement[0] or self.movement[1]:
                             self.player.set_action("attack")
                         else:
                             self.player.set_action("attack_nomovement")
-                    if event.button == 3:
-                        self.player.set_action("death")
+
+            if self.player.dead:
+                self.setup()
 
             self.screen.blit(
                 pygame.transform.scale(self.display, self.screen.get_size()), (0, 0)
+            )
+
+            heart_img = pygame.transform.scale_by(
+                self.assets["hearts"][self.player.health // 10], 5
+            )
+            self.screen.blit(
+                heart_img,
+                (50, self.screen.get_height() - 40 - heart_img.height),
             )
             pygame.display.update()
             self.clock.tick(60)
