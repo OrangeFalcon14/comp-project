@@ -7,8 +7,9 @@ Welcome to CodeQuest, a game where you learn to code by directly modifying the g
 ## Instructions:
 
 - Before you start the game, ensure you have the following installed:
-  - a code editor installed. eg. VSCode
   - Python version 3.13
+  - a code editor eg. VSCode
+  - an extension to handle Python files
 - Next, run `pip install -r requirements.txt`
 
 ## Keybinds:
