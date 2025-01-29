@@ -1,4 +1,4 @@
-from math import cos, exp, pi
+from math import exp
 import sys
 
 import pygame
@@ -71,6 +71,7 @@ class Game:
         self.setup()
 
         self.scroll = [0, 0]
+        self.heart_grow_animation_time = 0
 
     def setup(self):
         self.player.pos = self.player.respawn_pos.copy()
@@ -173,8 +174,15 @@ class Game:
                 pygame.transform.scale(self.display, self.screen.get_size()), (0, 0)
             )
 
+            scale_factor = 1
+            if self.heart_grow_animation_time > 0:
+                scale_factor = 1 + exp(
+                    -((self.heart_grow_animation_time - 50) ** 2) / 20
+                )
+                self.heart_grow_animation_time -= 1
+
             heart_img = pygame.transform.scale_by(
-                self.assets["hearts"][self.player.health // 10], 5
+                self.assets["hearts"][self.player.health // 10], 5 * scale_factor
             )
             self.screen.blit(
                 heart_img,

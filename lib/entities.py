@@ -219,8 +219,19 @@ class Player(PhysicsEntity):
 
         if self.action in ["attack", "attack_nomovement"]:
             self.size = (74, 30)
+            if self.flip:
+                if self.attack_time <= 1:
+                    self.pos[0] -= 50
+                    self.anim_offset[0] = -50
+                elif self.attack_time == 20:
+                    print("increased offset")
+                    self.size = (15, 30)
+                    self.anim_offset[0] = 0
+                    self.pos[0] += 50
+
         else:
             self.size = (15, 30)
+            self.anim_offset[0] = 0
 
         self.time_since_damage += 1
 
@@ -235,6 +246,7 @@ class Player(PhysicsEntity):
             ):
                 self.health -= 10
                 self.time_since_damage = 0
+                self.game.heart_grow_animation_time = 60
 
         if self.sprinting:
             if movement[0] > 0:
