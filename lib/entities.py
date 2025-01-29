@@ -168,6 +168,7 @@ class Player(PhysicsEntity):
         self.respawn_pos = [0, 0]
         self.health = 60
         self.time_since_damage = 0
+        self.time_since_death = 0
 
     def update(self, tilemap, movement=(0, 0)):
         super().update(tilemap, movement=movement)
@@ -177,13 +178,21 @@ class Player(PhysicsEntity):
             0 if self.attack_cooldown == 0 else self.attack_cooldown - 1
         )
 
-        if self.air_time / 60 > 1.5 and self.pos[1] > self.game.display.get_size()[1]:
+        if (
+            self.health <= 0
+            or self.air_time / 60 > 1.5
+            and self.pos[1] > self.game.display.get_size()[1]
+        ):
             self.dead = True
+            self.time_since_death += 1
+            self.set_action("death")
 
         if self.collisions["down"]:
             self.air_time = 0
 
-        if self.action == "turn_around":
+        if self.dead:
+            self.set_action("death")
+        elif self.action == "turn_around":
             if self.turn_around_time < 5:
                 self.turn_around_time += 1
             else:
@@ -212,10 +221,6 @@ class Player(PhysicsEntity):
             self.size = (74, 30)
         else:
             self.size = (15, 30)
-
-        if self.health <= 0:
-            self.dead = True
-            self.set_action("death")
 
         self.time_since_damage += 1
 

@@ -1,3 +1,4 @@
+from math import cos, exp, pi
 import sys
 
 import pygame
@@ -75,6 +76,7 @@ class Game:
         self.player.pos = self.player.respawn_pos.copy()
         self.player.dead = False
         self.player.health = 60
+        self.player.time_since_death = 0
         self.skeletons.clear()
         for tile in self.tilemap.offgrid_tiles:
             if tile["type"] == "player_spawner":
@@ -123,7 +125,6 @@ class Game:
                 skeleton = self.skeletons[i]
                 skeleton.update(self.tilemap)
                 if skeleton.time_since_death >= 15 * 5 - 2:
-                    # skeleton.set_action("death")
                     self.skeletons.pop(i)
                 skeleton.render(self.display, offset=render_scroll)
 
@@ -132,10 +133,11 @@ class Game:
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_a:
-                        self.movement[0] = True
-                    if event.key == pygame.K_d:
-                        self.movement[1] = True
+                    if not self.player.dead:
+                        if event.key == pygame.K_a:
+                            self.movement[0] = True
+                        if event.key == pygame.K_d:
+                            self.movement[1] = True
                     if event.key == pygame.K_w or event.key == pygame.K_SPACE:
                         if self.player.air_time < 5:
                             self.player.velocity[1] = -constants.JUMP_STRENGTH * (
@@ -161,7 +163,10 @@ class Game:
                         else:
                             self.player.set_action("attack_nomovement")
 
-            if self.player.dead:
+            if self.player.dead and (
+                self.player.time_since_death >= 10 * 5
+                or self.player.pos[1] > self.display.get_size()[1]
+            ):
                 self.setup()
 
             self.screen.blit(
