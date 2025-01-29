@@ -20,6 +20,7 @@ NON_RENDER_TILES = {
     "skeleton_spawner",
     "player_spawner",
     "skeleton_path_mirror",
+    "player_collision_detector",
 }
 
 

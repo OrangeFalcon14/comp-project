@@ -169,6 +169,8 @@ class Player(PhysicsEntity):
         self.health = 60
         self.time_since_damage = 0
         self.time_since_death = 0
+        self.time_since_collision = 0
+        self.has_hit_collider = False
 
     def update(self, tilemap, movement=(0, 0)):
         super().update(tilemap, movement=movement)
@@ -177,6 +179,8 @@ class Player(PhysicsEntity):
         self.attack_cooldown = (
             0 if self.attack_cooldown == 0 else self.attack_cooldown - 1
         )
+        if self.has_hit_collider:
+            self.time_since_collision += 1
 
         if (
             self.health <= 0
@@ -217,6 +221,9 @@ class Player(PhysicsEntity):
         else:
             self.set_action("idle")
 
+        if self.action == "attack" and movement[0] == 0:
+            self.set_action("attack_nomovement")
+
         if self.action in ["attack", "attack_nomovement"]:
             self.size = (74, 30)
             if self.flip:
@@ -224,7 +231,6 @@ class Player(PhysicsEntity):
                     self.pos[0] -= 50
                     self.anim_offset[0] = -50
                 elif self.attack_time == 20:
-                    print("increased offset")
                     self.size = (15, 30)
                     self.anim_offset[0] = 0
                     self.pos[0] += 50
@@ -247,6 +253,31 @@ class Player(PhysicsEntity):
                 self.health -= 10
                 self.time_since_damage = 0
                 self.game.heart_grow_animation_time = 60
+
+        for tile in self.game.player_collision_detectors:
+            rect = self.rect()
+            tile_rect = pygame.Rect(tile["pos"][0], tile["pos"][1], 10, 10)
+            if rect.colliderect(tile_rect):
+                if (
+                    tile["pos"][0] > 410
+                    and tile["pos"][0] < 414
+                    and constants.JUMP_STRENGTH < 2.5
+                ):
+                    self.has_hit_collider = True
+                    if self.time_since_collision > 10:
+                        self.game.popup_index = 0
+                elif tile["pos"][0] > 759 and tile["pos"][0] < 805:
+                    self.has_hit_collider = True
+                    if self.time_since_collision > 60 * 0.25:
+                        self.game.popup_index = 1
+                elif (
+                    tile["pos"][0] > 2082
+                    and tile["pos"][0] < 2284
+                    and constants.SPRINT_CONSTANT < 1.1
+                ):
+                    self.has_hit_collider = True
+                    if self.time_since_collision > 60 * 0.25:
+                        self.game.popup_index = 2
 
         if self.sprinting:
             if movement[0] > 0:

@@ -12,6 +12,7 @@ NON_RENDER_TILES = {
     "skeleton_spawner",
     "player_spawner",
     "skeleton_path_mirror",
+    "player_player_collision_detector",
 }
 
 
@@ -49,6 +50,7 @@ class Editor:
             "player_spawner": load_images("entities/player/idle/"),
             "skeleton_spawner": load_images("entities/skeleton/idle/"),
             "skeleton_path_mirror": pygame.Surface((10, 10)),
+            "player_collision_detector": pygame.Surface((10, 10)),
         }
 
         self.movement = [False, False, False, False]
