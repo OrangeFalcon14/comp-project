@@ -181,7 +181,7 @@ class Game:
 
                         if event.key == pygame.K_LSHIFT:
                             if self.player.air_time < 5:
-                                self.player.sprinting = True
+                                self.player.sprinting = False
 
                     if event.type == pygame.KEYUP:
                         if event.key == pygame.K_a:
