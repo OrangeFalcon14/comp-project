@@ -79,7 +79,7 @@ class Game:
             PopupDialog(
                 self,
                 "JUMPING",
-                "Uh oh. Looks like the player is too weak to jump up that block. Try changing the JUMP_STRENGTH variable in lib/constants.py\n\n\nPress Enter to continue",
+                "Uh oh. Looks like the player is too weak to jump up that block. Try changing the JUMP_STRENGTH variable in lib/constants.py\n\n\nDont forget to relaunch the app after making changes\nPress Enter to continue",
             ),
             PopupDialog(
                 self,
